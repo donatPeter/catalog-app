@@ -1,15 +1,46 @@
+import { IProduct } from "../../types/IProduct";
+
 export enum ActionType {
   Add = 'ADD',
+  Increment = 'INCREMENT',
+  Decrement = 'DECREMENT',
 }
 
-export interface IAddAncillary {
+export interface IAdd {
+  payload: IProduct;
   type: ActionType.Add;
 }
-export const add = (
-): IAddAncillary => ({
+export const addToCart = (
+  payload: IProduct
+): IAdd => ({
+  payload,
   type: ActionType.Add,
+});
+
+export interface IIncrement {
+  payload: number;
+  type: ActionType.Increment;
+}
+export const increment = (
+  payload: number
+): IIncrement => ({
+  payload,
+  type: ActionType.Increment,
+});
+
+export interface IDecrement {
+  payload: number;
+  type: ActionType.Decrement;
+}
+export const decrement = (
+  payload: number
+): IDecrement => ({
+  payload,
+  type: ActionType.Decrement,
 });
 
 
 export type Action =
-  | ReturnType<typeof add>;
+  | ReturnType<typeof addToCart>
+  | ReturnType<typeof increment>
+  | ReturnType<typeof decrement>;
