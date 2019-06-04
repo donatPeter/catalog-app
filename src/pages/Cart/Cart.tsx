@@ -11,9 +11,10 @@ export interface IProps {
 
 export class CartBase extends React.Component<IProps> {
   public render() {
+    const itemsInCart = this.props.productsInCart.reduce((prev, acc) => acc.amount + prev, 0)
     return (
       <React.Fragment>
-        <AppHeader />
+        <AppHeader itemsInCart={itemsInCart} />
         <div
           style={{
             margin: '20px 20px',

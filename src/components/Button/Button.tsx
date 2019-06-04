@@ -4,6 +4,7 @@ import { Link } from '@reach/router';
 
 export enum ButtonVariant {
   PRIMARY = 'primary',
+  SECONDARY = 'secondary',
   KNOB = 'knob',
 }
 
@@ -48,10 +49,13 @@ export const Button = styled.button<IProps>`
   align-items: center;
   align-self: flex-end;
   color: black;
-  background-color: ${({ disabled }) => {
-    switch (disabled) {
-      case true:
-        return 'grey';
+  background-color: ${({ disabled, variant }) => {
+    if (disabled) {
+      return 'lightgrey';
+    }
+    switch (variant) {
+      case ButtonVariant.SECONDARY:
+        return 'indianred';
       default:
         return 'green';
     }

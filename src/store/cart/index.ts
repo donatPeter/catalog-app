@@ -32,6 +32,11 @@ export function cartReducer(
           productsInCart: [...state.productsInCart, { ...action.payload, amount: 1 }],
         };
       }
+    case ActionType.Remove:
+      return {
+        ...state,
+        productsInCart: state.productsInCart.filter(p => p.id !== action.payload.id),
+      };
     case ActionType.Increment:
       return {
         ...state,

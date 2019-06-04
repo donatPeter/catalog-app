@@ -2,6 +2,7 @@ import { IProduct } from "../../types/IProduct";
 
 export enum ActionType {
   Add = 'ADD',
+  Remove = 'REMOVE',
   Increment = 'INCREMENT',
   Decrement = 'DECREMENT',
 }
@@ -15,6 +16,17 @@ export const addToCart = (
 ): IAdd => ({
   payload,
   type: ActionType.Add,
+});
+
+export interface IRemove {
+  payload: IProduct;
+  type: ActionType.Remove;
+}
+export const removeFromCart = (
+  payload: IProduct
+): IRemove => ({
+  payload,
+  type: ActionType.Remove,
 });
 
 export interface IIncrement {
@@ -42,5 +54,6 @@ export const decrement = (
 
 export type Action =
   | ReturnType<typeof addToCart>
+  | ReturnType<typeof removeFromCart>
   | ReturnType<typeof increment>
   | ReturnType<typeof decrement>;

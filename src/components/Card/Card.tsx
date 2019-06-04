@@ -1,6 +1,10 @@
 import styled from '../../utils/styledComponents';
 
-export const Card = styled<'div'>('div')`
+interface IProps {
+
+}
+
+export const Card = styled.div<IProps>`
   padding:  16px;
   margin: 16px;
   border:  1px solid black;
